@@ -1,2 +1,55 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+import sys
+
+
+def dapatkan_jawaban(pesan_user):
+    # Mengubah teks ke huruf kecil agar pencocokan tidak sensitif huruf besar/kecil
+    pesan = pesan_user.lower().strip()
+
+    # Logika aturan percakapan (Aturan / Key-Value)
+    if pesan in ["halo", "hai", "halo chatbot", "p"]:
+        return "Halo! Ada yang bisa saya bantu?"
+
+    elif "siapa namamu" in pesan or "nama kamu" in pesan:
+        return "Saya adalah PyBot, chatbot sederhana yang dibuat menggunakan Python."
+
+    elif "apa kabar" in pesan:
+        return "Saya cuma kode program, jadi selalu luar biasa! Kamu bagaimana?"
+
+    elif "terima kasih" in pesan or "makasih" in pesan:
+        return "Sama-sama! Senang bisa membantu."
+
+    elif "keluar" in pesan or "stop" in pesan or "bye" in pesan:
+        return "Sampai jumpa lagi!"
+
+    else:
+        return "Maaf, saya belum mengerti maksud pesanmu. Coba tanyakan hal lain."
+
+
+def jalankan_chatbot():
+    print("=" * 40)
+    print("         PyBot - Chatbot Sederhana        ")
+    print("=" * 40)
+    print("Ketik 'keluar' atau 'bye' untuk mengakhiri chat.\n")
+
+    while True:
+        try:
+            user_input = input("Kamu: ")
+
+            # Lewati jika user hanya menekan Enter
+            if not user_input.strip():
+                continue
+
+            jawaban = dapatkan_jawaban(user_input)
+            print(f"Bot : {jawaban}\n")
+
+            # Hentikan program jika user ingin keluar
+            if user_input.lower().strip() in ["keluar", "stop", "bye"]:
+                sys.exit()
+
+        except (KeyboardInterrupt, EOFError):
+            print("\nBot : Sampai jumpa!")
+            break
+
+
+if __name__ == "__main__":
+    jalankan_chatbot()
