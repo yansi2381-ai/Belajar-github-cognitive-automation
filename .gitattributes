@@ -9,7 +9,7 @@ def dapatkan_jawaban(pesan_user):
     if pesan in ["halo", "hai", "halo chatbot", "p"]:
         return "Halo! Ada yang bisa saya bantu?"
 
-    elif "siapa namamu" in pesan or "nama kamu" in pesan:
+    elif "siapa namamu tuan" in pesan or "nama kamu" in pesan:
         return "Saya adalah PyBot, chatbot sederhana yang dibuat menggunakan Python."
 
     elif "apa kabar" in pesan:
